@@ -1,0 +1,32 @@
+{
+    "$schema": "https://www.schemastore.org/package.json",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "watch:build": "nodemon"
+    },
+    "devDependencies": {
+        "@tailwindcss/cli": "^4.1.18",
+        "@tailwindcss/vite": "^4.0.0",
+        "autoprefixer": "^10.4.24",
+        "axios": "^1.11.0",
+        "concurrently": "^9.0.1",
+        "laravel-vite-plugin": "^2.0.0",
+        "nodemon": "^3.1.11",
+        "postcss": "^8.5.6",
+        "tailwindcss": "^4.1.18",
+        "vite": "^7.0.7"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^7.2.0",
+        "@fortawesome/free-solid-svg-icons": "^7.2.0",
+        "@fortawesome/vue-fontawesome": "^3.0.1",
+        "@inertiajs/core": "^2.3.13",
+        "@inertiajs/vue3": "^2.3.13",
+        "@vitejs/plugin-vue": "^6.0.4",
+        "vue": "^3.5.28",
+        "ziggy-js": "^2.6.2"
+    }
+}

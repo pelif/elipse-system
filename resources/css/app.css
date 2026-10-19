@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../**/*.vue';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@layer components {
+    .container-form {
+        @apply grid grid-cols-2 gap-6;
+    }
+
+    .group-form {
+        @apply w-full p-2 mt-1;
+    }
+
+    .input-container {
+        @apply w-full p-2 mt-1;
+    }
+
+    .input-text {
+        @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent mt-2;
+    }
+
+    .input-select {
+        @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent mt-2;
+    }
+
+    .input-label {
+        @apply font-semibold text-gray-500 text-lg;
+    }
+
+    .input-error {
+        @apply text-red-700 text-sm py-2;
+    }
+
+    .btn-submit {
+        @apply  px-6 py-4 mx-4 bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 hover:opacity-80 transition-all duration-500 ease-in-out font-semibold rounded-lg focus:outline-none focus:ring-2 focus:border-transparent mt-2 cursor-pointer;
+    }
+
+    .success-message {
+        @apply bg-green-300 text-lg text-green-950 rounded-lg p-6 m-4 w-auto text-center
+    }
+
+    .error-message {
+        @apply bg-red-300 text-lg text-red-950 rounded-lg p-6 m-4 w-auto text-center
+    }
+
+}

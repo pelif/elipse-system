@@ -1,0 +1,13 @@
+{
+  "watch": [
+    "resources"
+  ],
+  "ext": "vue,js",
+  "ignore": [
+    "node_modules",
+    "vendor",
+    "public/build"
+  ],
+  "exec": "docker exec laravel_app npm run build",
+  "delay": "500ms"
+}

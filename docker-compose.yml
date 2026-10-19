@@ -1,0 +1,80 @@
+version: '3.9'
+
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: laravel_app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    entrypoint: ["/var/www/html/docker/entrypoint.sh"]
+    volumes:
+      - ./:/var/www/html
+      - ./docker/php.ini:/usr/local/etc/php/conf.d/99-custom.ini
+      - ./docker/error.log:/var/log/nginx/error.log
+    ports:
+      - "8000:80"
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      elipse_network:
+        ipv4_address: 160.20.0.4
+
+  mysql:
+    image: mysql:8
+    container_name: elipse_db
+    restart: unless-stopped
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER: elipseERP
+      MYSQL_PASSWORD: elipseERP
+      MYSQL_PORT: 3306
+      MYSQL_ROOT_PASSWORD: elipse_root
+      MYSQL_DATABASE: elipse_db
+    networks:
+      elipse_network:
+        ipv4_address: 160.20.0.3
+
+  redis:
+    image: redis:7-alpine
+    container_name: laravel_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      elipse_network:
+        ipv4_address: 160.20.0.5
+
+  vite:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: laravel_vite
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "5173:5173"
+    entrypoint: [ "npm", "run", "dev" ]
+    networks:
+      elipse_network:
+        ipv4_address: 160.20.0.6
+
+networks:
+  elipse_network:
+    ipam:
+      config:
+        - subnet: 160.20.0.0/16
+          gateway: 160.20.0.1
+volumes:
+  dbdata:
+  redis_data:
